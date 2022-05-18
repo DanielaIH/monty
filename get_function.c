@@ -37,7 +37,7 @@ int get_function_stack(char **tokens, sstack_t **stack)
 						ops[i].f(stack, number);
 					}	else
 					{
-						printf("L<%d>: usage: push integer\n", lines);
+						dprintf(2, "L%d: usage: push integer\n", lines);
 						exit(EXIT_FAILURE);
 					}
 				}	else

@@ -19,21 +19,21 @@ char *read_textfile(const char *filename, size_t text)
 
 	if (!filename)
 	{
-		printf("USAGE: monty file");
+		dprintf(2, "USAGE: monty file\n");
 		return (NULL);
 	}
 
 	fd = open(filename, O_RDWR);
 	if (fd == -1)
 	{
-		printf("Error: Can't open file %s", filename);
+		dprintf(2, "Error: Can't open file %s\n", filename);
 		return (NULL);
 	}
 
 	buffer = (char *)malloc(sizeof(char) * text);
 	if (!buffer)
 	{
-		printf("Error: malloc failed");
+		dprintf(2, "Error: malloc failed\n");
 		free(buffer);
 		return (NULL);
 	}
