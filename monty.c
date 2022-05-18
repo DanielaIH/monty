@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 
 	buffer = read_textfile(argv[1], 1024);
 	if (!buffer)
-		return (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 
 	tokens = _strtok(tokens, buffer);
 
