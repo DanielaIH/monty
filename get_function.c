@@ -52,7 +52,7 @@ int get_function_stack(char **tokens, sstack_t **stack)
 					}
 					else
 					{
-						printf("L%d: usage: push integer\n", lines);
+						printf("L<%d>: usage: push integer\n", lines);
 						exit(EXIT_FAILURE);
 					}
 				}
@@ -62,13 +62,13 @@ int get_function_stack(char **tokens, sstack_t **stack)
 				lines++;
 			}
 	}
-	i = 0;
-	/*
-	while (stacks[i])
-	{
-		printf("stack : %s\n", stacks[i]);  only print the stack
-		i++;
-	} 
-*/
+/**
+ * i = 0; 
+ * while (stacks[i])
+ *	{
+ *		printf("stack : %s\n", stacks[i]);  only print the stack
+ *		i++;
+ *	} 
+ */
 	return (0);
 }
