@@ -36,9 +36,7 @@ char *read_textfile(const char *filename, size_t text)
 	if (size_R == -1)
 		return (NULL);
 
-	printf("%s\n", buffer);
-	
-/*	free(buffer); */
+/*	printf("%s\n", buffer); */
 	close(fd);
 	return (buffer);
 }
