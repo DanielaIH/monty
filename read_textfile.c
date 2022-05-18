@@ -5,6 +5,12 @@
 #include <unistd.h>
 #include <string.h>
 
+/**
+ * read_textfile - Read the monty file
+ * @filename: name of the monty file
+ * @text: Read text.
+ * Return: Pointer to the read text.
+ */
 char *read_textfile(const char *filename, size_t text)
 {
 	int fd;

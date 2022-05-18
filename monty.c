@@ -22,10 +22,7 @@ int main(int argc, char *argv[])
 	tokens = _strtok(tokens, buffer);
 
 	get_function_stack(tokens, stack);
-/**
- * 	if (in_func > 0)
- *		printf("I find a function");
- */
+
 	free(tokens);
 	return (0);
 }

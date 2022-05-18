@@ -7,7 +7,7 @@
  */
 void _push(sstack_t **stack, unsigned int line_number)
 {
-    sstack_t *new, *aux;
+	sstack_t *new, *aux;
 
 	aux = *stack;
 	new = malloc(sizeof(sstack_t));
@@ -26,5 +26,4 @@ void _push(sstack_t **stack, unsigned int line_number)
 		new->next = aux;
 	}
 	*stack = new;
-	return;
 }
