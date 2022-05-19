@@ -27,6 +27,7 @@ int main(int argc, char *argv[])
 	while ((getline(&buffer, &size, fd)) != -1)
 	{
 		tokens = NULL, lines++;
+		ts_handler(buffer);
 		if (strcmp(buffer, "\n") != 0)
 		{
 			tokens = _strtok(tokens, buffer);
@@ -36,6 +37,11 @@ int main(int argc, char *argv[])
 			if (gf == 1)
 			{
 				dprintf(2, "L%d: usage: push integer\n", lines);
+				exit(EXIT_FAILURE);
+			}
+			if (gf == 2)
+			{
+				dprintf(2, "L%d: unknown instruction %s\n", lines, tokens[0]);
 				exit(EXIT_FAILURE);
 			}
 			free(tokens);
