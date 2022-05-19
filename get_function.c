@@ -16,6 +16,7 @@ int get_function_stack(char **tokens, sstack_t **stack)
 		{"swap", _swap},
 		{"add", _add},
 		{"nop", _nop},
+		{"\n", _nop},
 		{NULL, NULL} };
 	int i = 0, j = 0;
 	unsigned int number = 0;
@@ -25,10 +26,8 @@ int get_function_stack(char **tokens, sstack_t **stack)
 		for (i = 0; ops[i].opcode; i++)
 			if (strcmp(ops[i].opcode, tokens[j]) == 0)
 			{
-				if (strcmp(tokens[j], "push") == 0)
+				if (strcmp(tokens[j], "push") == 0 && tokens[j + 1])
 				{
-					printf("tokens[%d + 1] : %s", j, tokens[j + 1]);
-					printf("atoi : %d", atoi(tokens[j + 1]));
 					number = _char_to_number(tokens[j + 1]);
 					if (!number || atoi(tokens[j + 1]) != 0)
 					{

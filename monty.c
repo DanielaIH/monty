@@ -27,17 +27,19 @@ int main(int argc, char *argv[])
 	while ((getline(&buffer, &size, fd)) != -1)
 	{
 		tokens = NULL, lines++;
-		tokens = _strtok(tokens, buffer);
-		for (i = 0; tokens[i]; i++)
-			printf("tokens[%ld] : %s\n", i, tokens[i]);
-		gf = get_function_stack(tokens, &stack);
-		printf("gf : %d\n", gf);
-		if (gf == 1)
+		if (strcmp(buffer, "\n") != 0)
 		{
-			dprintf(2, "L%d: usage: push integer\n", lines);
-			exit(EXIT_FAILURE);
+			tokens = _strtok(tokens, buffer);
+			for (i = 0; tokens[i]; i++)
+				printf("tokens[%ld] : %s\n", i, tokens[i]);
+			gf = get_function_stack(tokens, &stack);
+			if (gf == 1)
+			{
+				dprintf(2, "L%d: usage: push integer\n", lines);
+				exit(EXIT_FAILURE);
+			}
+			free(tokens);
 		}
-		free(tokens);
 	}
 	free(buffer);
 	fclose(fd);
