@@ -35,12 +35,14 @@ int get_function_stack(char **tokens, sstack_t **stack)
 					if (tokens[j + 1] != NULL)
 					{	number = _char_to_number(tokens[j + 1]);
 						ops[i].f(stack, number);
-					}	else
+					}
+					else
 					{
 						dprintf(2, "L%d: usage: push integer\n", lines);
 						exit(EXIT_FAILURE);
 					}
-				}	else
+				}
+				else
 					ops[i].f(stack, 0);
 				stacks[lines] = ops[i].opcode;
 				lines++;
