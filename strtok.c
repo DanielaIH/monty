@@ -29,7 +29,7 @@ char **_strtok(char **tokens, char *string)
 	while (tokens[i])
 	{
 		if (strcmp(tokens[i], "push") == 0)
-			if (_isnumber(tokens[i + 1]) == 0)
+			if (tokens[i + 1] == NULL || _isnumber(tokens[i + 1]) == 0)
 				tokens[i + 1] = NULL;
 		i++;
 	}
