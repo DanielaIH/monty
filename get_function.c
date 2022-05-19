@@ -17,11 +17,9 @@ int get_function_stack(char **tokens, sstack_t **stack)
 		{"add", _add},
 		{"nop", _nop},
 		{NULL, NULL} };
-	int i = 0, j = 0, lines = 1;
+	int i = 0, j = 0;
 	unsigned int number = 0;
-	char **stacks = NULL;
 
-	stacks = malloc(20 * sizeof(char *));
 	stack = malloc(10 * sizeof(sstack_t));
 	if (tokens[0] == NULL)
 		tokens[0] = "spaces";
@@ -33,19 +31,15 @@ int get_function_stack(char **tokens, sstack_t **stack)
 				if (strcmp(tokens[j], "push") == 0)
 				{
 					if (tokens[j + 1] != NULL)
-					{	number = _char_to_number(tokens[j + 1]);
+					{
+						number = _char_to_number(tokens[j + 1]);
 						ops[i].f(stack, number);
 					}
 					else
-					{
-						dprintf(2, "L%d: usage: push integer\n", lines);
-						exit(EXIT_FAILURE);
-					}
+						return (1);
 				}
 				else
 					ops[i].f(stack, 0);
-				stacks[lines] = ops[i].opcode;
-				lines++;
 			}
 	}
 	return (0);

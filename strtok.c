@@ -7,9 +7,8 @@
  */
 char **_strtok(char **tokens, char *string)
 {
-	char *token = NULL, **tmp = NULL, *tok_tmp = NULL;
-	int i = 0, j, k = 0;
-	char opcodes[20][10] = { {"push"}, {"pall"}, {"pint"}, {"pop"}, {"swap"}, {""} };
+	char *token = NULL;
+	int i = 0;
 
 	tokens = malloc(1024 * sizeof(char *));
 	if (tokens == NULL)
@@ -18,41 +17,16 @@ char **_strtok(char **tokens, char *string)
 		return (NULL);
 	}
 
-	token = strtok(string, "\n");
-	while (token != NULL)
+	token = strtok(string, "\t \n\r");
+	tokens[i] = token;
+	if (strcmp(token, "push") == 0)
 	{
+		token = strtok(NULL, "\t \n\r"), i++;
 		tokens[i] = token;
-		i++;
-		token = strtok(NULL, "\n");
+		printf("%s\n", tokens[i]);
+		if (tokens[i] == NULL || _isnumber(tokens[i]) == 0)
+			tokens[i] = NULL;
 	}
-	tokens[i] = NULL;
-	tmp = malloc(1024 * sizeof(char *));
-	if (!tmp)
-	{
-		free(tmp);
-		return (NULL);
-	}
-	for (i = 0; tokens[i]; i++)
-	{
-		tok_tmp = strtok(tokens[i], "\t\r ");
-		for (j = 0; j < 5; j++)
-		{
-			if (!strcmp(tok_tmp, opcodes[j]))
-			{
-				tmp[k] = tok_tmp, k++;
-				if (strcmp(tok_tmp, "push") == 0)
-				{
-					tok_tmp = strtok(NULL, "\t\r ");
-					tmp[k] = tok_tmp, k++;
-				}
-			}
-		}
-	}
-	tmp[k] = NULL;
-	for (i = 0; tmp[i]; i++)
-		if (strcmp(tmp[i], "push") == 0)
-			if (tmp[i + 1] == NULL || _isnumber(tmp[i + 1]) == 0)
-				tmp[i + 1] = NULL;
-	free(tokens);
-	return (tmp);
+	i++, tokens[i] = NULL;
+	return (tokens);
 }

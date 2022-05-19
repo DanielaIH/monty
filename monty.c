@@ -1,4 +1,5 @@
 #include "monty.h"
+
 /**
  * main - interpretes Monty byte codes and executes them.
  * @argc: Number of argv
@@ -8,25 +9,33 @@
 
 int main(int argc, char *argv[])
 {
-	/*ssize_t fd;*/
-	int i;
-	/* int in_func = 0; */
+	int lines = 0, gf = 0;
+	FILE *fd;
+	/*ssize_t size_R; */
+	size_t size = 0;
 	char *buffer = NULL, **tokens = NULL;
-	/* void (*func)(sstack_t, unsigned int); */
-	struct stack_s **stack = NULL;
+	sstack_t *stack = NULL;
 	(void)argc;
 
-	printf("here\n");
-	buffer = read_textfile(argv[1], 1024);
-	if (!buffer)
+	fd = fopen(argv[1], "r");
+	if (fd == NULL)
+	{
+		dprintf(2, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
+	}
 
-	printf("here");
-	tokens = _strtok(tokens, buffer);
-	for (i = 0; tokens[i]; i++)
-		printf("%s", tokens[i]);
-	get_function_stack(tokens, stack);
-
+	while ((getline(&buffer, &size, fd)) != -1)
+	{
+		tokens = NULL, lines++;
+		tokens = _strtok(tokens, buffer);
+		gf = get_function_stack(tokens, &stack);
+		if (gf == 1)
+		{
+			dprintf(2, "L%d: usage: push integer\n", lines);
+			exit(EXIT_FAILURE);
+		}
+	}
+	free_stack(&stack);
 	free(tokens);
 	return (0);
 }

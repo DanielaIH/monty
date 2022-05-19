@@ -4,6 +4,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 #include <ctype.h>
 
 /**
@@ -37,7 +41,6 @@ typedef struct instruction_s
 } instruction_t;
 
 char **_strtok(char **tokens, char *string);
-char *read_textfile(const char *filename, size_t text);
 int get_function_stack(char **tokens, sstack_t **stack);
 unsigned int _char_to_number(char *str);
 unsigned int _isnumber(char *str);
@@ -58,5 +61,6 @@ void _rotl(sstack_t **stack, unsigned int line_number);
 void _rotr(sstack_t **stack, unsigned int line_number);
 void _stack(sstack_t **stack, unsigned int line_number);
 void _queue(sstack_t **stack, unsigned int line_number);
+void free_stack(sstack_t **stack);
 
 #endif /* _MONTY_H_ */

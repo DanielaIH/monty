@@ -9,10 +9,9 @@ void _pall(sstack_t **stack, __attribute__((unused))unsigned int line_number)
 {
 	sstack_t *aux = *stack;
 
-	while (stack && *stack)
+	while (aux)
 	{
-		printf("%d\n", (*stack)->n);
-		*stack = (*stack)->next;
+		printf("%d\n", aux->n);
+		aux = aux->next;
 	}
-	*stack = aux;
 }
