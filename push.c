@@ -7,26 +7,23 @@
  */
 void _push(sstack_t **stack, unsigned int line_number)
 {
-	sstack_t *tmp;
+	sstack_t *new, *aux;
 
-	if (stack == NULL)
+	aux = *stack;
+	new = malloc(sizeof(sstack_t));
+	if (new == NULL)
 		return;
-	tmp = malloc(sizeof(sstack_t));
-	if (!tmp)
+
+	new->n = line_number;
+	new->prev = NULL;
+	if (!aux)
+		new->next = NULL;
+	else
 	{
-		dprintf(2, "Error: malloc failed\n");
-		free(tmp);
-		exit(EXIT_FAILURE);
+		while (aux->prev)
+			aux = aux->prev;
+		aux->prev = new;
+		new->next = aux;
 	}
-	tmp->n = line_number;
-	if (*stack == NULL)
-	{
-		tmp->next = *stack;
-		tmp->prev = NULL;
-		*stack = tmp;
-	}
-	(*stack)->prev = tmp;
-	tmp->next = (*stack);
-	tmp->prev = NULL;
-	*stack = tmp;
+	*stack = new;
 }

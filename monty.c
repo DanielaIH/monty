@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 	int lines = 0, gf = 0;
 	FILE *fd;
 	/*ssize_t size_R; */
-	size_t size = 0;
+	size_t size = 0, i;
 	char *buffer = NULL, **tokens = NULL;
 	sstack_t *stack = NULL;
 	(void)argc;
@@ -28,14 +28,19 @@ int main(int argc, char *argv[])
 	{
 		tokens = NULL, lines++;
 		tokens = _strtok(tokens, buffer);
+		for (i = 0; tokens[i]; i++)
+			printf("tokens[%ld] : %s\n", i, tokens[i]);
 		gf = get_function_stack(tokens, &stack);
+		printf("gf : %d\n", gf);
 		if (gf == 1)
 		{
 			dprintf(2, "L%d: usage: push integer\n", lines);
 			exit(EXIT_FAILURE);
 		}
+		free(tokens);
 	}
+	free(buffer);
+	fclose(fd);
 	free_stack(&stack);
-	free(tokens);
 	return (0);
 }

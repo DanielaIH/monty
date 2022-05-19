@@ -16,16 +16,12 @@ char **_strtok(char **tokens, char *string)
 		free(tokens);
 		return (NULL);
 	}
-
 	token = strtok(string, "\t \n\r");
 	tokens[i] = token;
 	if (strcmp(token, "push") == 0)
 	{
 		token = strtok(NULL, "\t \n\r"), i++;
 		tokens[i] = token;
-		printf("%s\n", tokens[i]);
-		if (tokens[i] == NULL || _isnumber(tokens[i]) == 0)
-			tokens[i] = NULL;
 	}
 	i++, tokens[i] = NULL;
 	return (tokens);

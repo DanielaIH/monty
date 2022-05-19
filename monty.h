@@ -62,5 +62,6 @@ void _rotr(sstack_t **stack, unsigned int line_number);
 void _stack(sstack_t **stack, unsigned int line_number);
 void _queue(sstack_t **stack, unsigned int line_number);
 void free_stack(sstack_t **stack);
+void ts_handler(char *line);
 
 #endif /* _MONTY_H_ */

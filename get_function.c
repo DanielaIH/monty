@@ -20,9 +20,6 @@ int get_function_stack(char **tokens, sstack_t **stack)
 	int i = 0, j = 0;
 	unsigned int number = 0;
 
-	stack = malloc(10 * sizeof(sstack_t));
-	if (tokens[0] == NULL)
-		tokens[0] = "spaces";
 	for (j = 0; tokens[j]; j++)
 	{
 		for (i = 0; ops[i].opcode; i++)
@@ -30,9 +27,12 @@ int get_function_stack(char **tokens, sstack_t **stack)
 			{
 				if (strcmp(tokens[j], "push") == 0)
 				{
-					if (tokens[j + 1] != NULL)
+					printf("tokens[%d + 1] : %s", j, tokens[j + 1]);
+					printf("atoi : %d", atoi(tokens[j + 1]));
+					number = _char_to_number(tokens[j + 1]);
+					if (!number || atoi(tokens[j + 1]) != 0)
 					{
-						number = _char_to_number(tokens[j + 1]);
+						number = atoi(tokens[j + 1]);
 						ops[i].f(stack, number);
 					}
 					else
