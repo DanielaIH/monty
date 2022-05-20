@@ -33,7 +33,6 @@ int main(int argc, char *argv[])
 		{
 			tokens = _strtok(tokens, buffer);
 			gf = get_function_stack(tokens, &stack);
-			printf("%s\n", tokens[0]);
 			if (gf == 1)
 			{
 				free(tokens), free(buffer), free_stack(&stack), fclose(fd);
