@@ -20,8 +20,7 @@ int get_function_stack(char **tokens, sstack_t **stack, unsigned int lines)
 		for (i = 0; ops[i].opcode; i++)
 		{
 			if (strcmp(ops[i].opcode, tokens[j]) == 0)
-			{
-				find_func = 1;
+			{	find_func = 1;
 				if (strcmp(tokens[j], "push") == 0)
 				{
 					if (!tokens[j + 1])
@@ -30,8 +29,7 @@ int get_function_stack(char **tokens, sstack_t **stack, unsigned int lines)
 					if (out)
 						return (1);
 					if (!number || atoi(tokens[j + 1]) != 0)
-					{
-						number = atoi(tokens[j + 1]), ops[i].f(stack, number);
+					{	number = atoi(tokens[j + 1]), ops[i].f(stack, number);
 						return (0);
 					} else
 						return (1);
@@ -39,6 +37,8 @@ int get_function_stack(char **tokens, sstack_t **stack, unsigned int lines)
 				{
 					ops[i].f(stack, lines);
 					if (!*stack && !strcmp(tokens[j], "pint"))
+						return (3);
+					else
 						return (3);
 					return (0);
 				}
