@@ -7,7 +7,7 @@
  */
 void _pop(sstack_t **stack, unsigned int line_number)
 {
-	sstack_t *tmp = NULL;
+	sstack_t *tmp;
 
 	if (*stack)
 	{
