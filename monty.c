@@ -31,16 +31,16 @@ int main(int argc, char *argv[])
 		if (strcmp(buffer, "\n") != 0)
 		{
 			tokens = _strtok(tokens, buffer);
-			gf = get_function_stack(tokens, &stack, &lines);
+			gf = get_function_stack(tokens, &stack);
 			if (gf == 1)
 			{
-				dprintf(2, "L%d: usage: push integer\n", lines);
-				exit(EXIT_FAILURE);
+				free(tokens), free(buffer), free_stack(&stack), fclose(fd);
+				dprintf(2, "L%d: usage: push integer\n", lines), exit(EXIT_FAILURE);
 			}
 			if (gf == 2)
 			{
-				dprintf(2, "L%d: unknown instruction %s\n", lines, tokens[0]);
-				exit(EXIT_FAILURE);
+				free(buffer), free_stack(&stack), fclose(fd);
+				dprintf(2, "L%d: unknown instruction %s\n", lines, tokens[0]), exit(EXIT_FAILURE);
 			}
 			free(tokens);
 		}

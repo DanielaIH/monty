@@ -5,11 +5,13 @@
  * Return: the string in int format
  */
 
-int _char_to_number(char *str, int *lines)
+int _char_to_number(char *str, int *ptr_number)
 {
 	unsigned int i = 0, digits = 1, j = 0, temp = 0;
 	int minus = 1, number = 0;
 
+	if (ptr_number)
+		ptr_number = &number;
 	if (!str)
 		return (0);
 
@@ -31,10 +33,11 @@ int _char_to_number(char *str, int *lines)
 			j++;
 		}
 		else
-			dprintf(2, "L%d: usage: push integer\n", *lines), exit (EXIT_FAILURE);
+			return (1);
 	}
-
-	return (minus * number);
+	number *= minus;
+	ptr_number = &number;
+	return (0);
 }
 
 /**

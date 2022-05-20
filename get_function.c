@@ -6,14 +6,14 @@
  * Return: Nothing.
  */
 
-int get_function_stack(char **tokens, sstack_t **stack, int *lines)
+int get_function_stack(char **tokens, sstack_t **stack)
 {
 	instruction_t ops[] = { {"push", _push}, {"pall", _pall}, {"pint", _pint},
 				{"pop", _pop}, {"swap", _swap},	{"add", _add},
 				{"sub", _pop}, {"div", _swap}, {"mul", _add},
 				{"nop", _nop}, {"\n", _nop}, {NULL, NULL} };
 	int i = 0, j = 0, find_func = 0;
-	int number = 0;
+	int number = 0, out = 0;
 
 	for (j = 0; tokens[j]; j++)
 	{
@@ -26,7 +26,9 @@ int get_function_stack(char **tokens, sstack_t **stack, int *lines)
 				{
 					if (!tokens[j + 1])
 						return (1);
-					number = _char_to_number(tokens[j + 1], lines);
+					out = _char_to_number(tokens[j + 1], &number);
+					if (out)
+						return (1);
 					if (!number || atoi(tokens[j + 1]) != 0)
 					{
 						number = atoi(tokens[j + 1]), ops[i].f(stack, number);
