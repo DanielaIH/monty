@@ -15,8 +15,12 @@ int main(int argc, char *argv[])
 	size_t size = 0;
 	char *buffer = NULL, **tokens = NULL;
 	sstack_t *stack = NULL;
-	(void)argc;
 
+	if (argc != 2)
+	{
+		dprintf(2, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
 	fd = fopen(argv[1], "r");
 	if (fd == NULL)
 	{
