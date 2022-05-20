@@ -23,10 +23,15 @@ int _char_to_number(char *str)
 
 	while (str[j])
 	{
-		temp = (str[j] - '0') * digits;
-		number += temp;
-		digits /= 10;
-		j++;
+		if (47 < str[j] < 58)
+		{
+			temp = (str[j] - '0') * digits;
+			number += temp;
+			digits /= 10;
+			j++;
+		}
+		else
+			exit (EXIT_FAILURE);
 	}
 	printf("minus = %i\n", minus);
 	return (minus * number);
