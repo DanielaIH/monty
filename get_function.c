@@ -12,7 +12,7 @@ int get_function_stack(char **tokens, sstack_t **stack)
 				{"pop", _pop}, {"swap", _swap},	{"add", _add},
 				{"nop", _nop}, {"\n", _nop}, {NULL, NULL} };
 	int i = 0, j = 0, find_func = 0;
-	unsigned int number = 0;
+	int number = 0;
 
 	for (j = 0; tokens[j]; j++)
 	{
@@ -26,6 +26,7 @@ int get_function_stack(char **tokens, sstack_t **stack)
 					if (!tokens[j + 1])
 						return (1);
 					number = _char_to_number(tokens[j + 1]);
+					printf("number %d\n", number);
 					if (!number || atoi(tokens[j + 1]) != 0)
 					{
 						number = atoi(tokens[j + 1]), ops[i].f(stack, number);

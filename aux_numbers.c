@@ -5,15 +5,19 @@
  * Return: the string in int format
  */
 
-unsigned int _char_to_number(char *str)
+int _char_to_number(char *str)
 {
-	unsigned int i = 0, digits = 1, j = 0, number = 0, temp = 0;
+	unsigned int i = 0, digits = 1, j = 0, temp = 0;
+	int minus = 1, number = 0;
 
 	if (!str)
 		return (0);
 
+ 	if (str[j] == 45)
+        i++, j++, minus -= 2;
+
 	for (; str[i]; i++)
-		digits *= 10;
+			digits *= 10;
 
 	digits /= 10;
 
@@ -24,7 +28,8 @@ unsigned int _char_to_number(char *str)
 		digits /= 10;
 		j++;
 	}
-	return (number);
+	printf("minus = %i\n", minus);
+	return (minus * number);
 }
 
 /**
