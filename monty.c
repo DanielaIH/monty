@@ -17,17 +17,14 @@ int main(int argc, char *argv[])
 	sstack_t *stack = NULL;
 
 	if (argc != 2)
-	{
-		dprintf(2, "USAGE: monty file\n");
+	{	dprintf(2, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 	fd = fopen(argv[1], "r");
 	if (fd == NULL)
-	{
-		dprintf(2, "Error: Can't open file %s\n", argv[1]);
+	{	dprintf(2, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-
 	while ((getline(&buffer, &size, fd)) != -1)
 	{
 		tokens = NULL, lines++;
@@ -45,9 +42,8 @@ int main(int argc, char *argv[])
 			{
 				free(buffer), free_stack(&stack), fclose(fd);
 				dprintf(2, "L%d: unknown instruction %s\n", lines, tokens[0]);
-				exit(EXIT_FAILURE);
-			}
-			free(tokens);
+				free(tokens), exit(EXIT_FAILURE);
+			} free(tokens);
 		}
 	}
 	free(buffer), free_stack(&stack), fclose(fd);
