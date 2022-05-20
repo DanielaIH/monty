@@ -7,6 +7,13 @@
  */
 void _pop(sstack_t **stack, unsigned int line_number)
 {
-	(void)stack;
+	sstack_t *tmp = NULL;
 	(void)line_number;
+
+	if (*stack)
+	{
+		tmp = *stack;
+		*stack = (*stack)->next;
+		free(tmp);
+	}
 }

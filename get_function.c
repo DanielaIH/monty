@@ -8,16 +8,9 @@
 
 int get_function_stack(char **tokens, sstack_t **stack)
 {
-	instruction_t ops[] = {
-		{"push", _push},
-		{"pall", _pall},
-		{"pint", _pint},
-		{"pop", _pop},
-		{"swap", _swap},
-		{"add", _add},
-		{"nop", _nop},
-		{"\n", _nop},
-		{NULL, NULL} };
+	instruction_t ops[] = { {"push", _push}, {"pall", _pall}, {"pint", _pint},
+				{"pop", _pop}, {"swap", _swap},	{"add", _add},
+				{"nop", _nop}, {"\n", _nop}, {NULL, NULL} };
 	int i = 0, j = 0, find_func = 0;
 	unsigned int number = 0;
 
@@ -35,8 +28,7 @@ int get_function_stack(char **tokens, sstack_t **stack)
 					number = _char_to_number(tokens[j + 1]);
 					if (!number || atoi(tokens[j + 1]) != 0)
 					{
-						number = atoi(tokens[j + 1]);
-						ops[i].f(stack, number);
+						number = atoi(tokens[j + 1]), ops[i].f(stack, number);
 						return (0);
 					}
 					else
@@ -45,7 +37,7 @@ int get_function_stack(char **tokens, sstack_t **stack)
 				else
 				{
 					ops[i].f(stack, 0);
-					return (0);		
+					return (0);
 				}
 			}
 			else

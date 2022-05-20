@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * _ts_handler - function for handler tabs and spaces.
+ * ts_handler - function for handler tabs and spaces.
  * @line: char pointer input.
  * Return: Nothing.
  */
