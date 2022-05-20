@@ -2,6 +2,7 @@
 /**
  * _char_to_number - converts a char* to an int
  * @str: string to be converted to an int
+ * @ptr_number: pointer to int input
  * Return: the string in int format
  */
 
@@ -15,11 +16,11 @@ int _char_to_number(char *str, int *ptr_number)
 	if (!str)
 		return (0);
 
- 	if (str[j] == 45)
-        i++, j++, minus -= 2;
+	if (str[j] == 45)
+		i++, j++, minus -= 2;
 
 	for (; str[i]; i++)
-			digits *= 10;
+		digits *= 10;
 
 	digits /= 10;
 

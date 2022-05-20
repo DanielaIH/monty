@@ -40,13 +40,12 @@ int main(int argc, char *argv[])
 			if (gf == 2)
 			{
 				free(buffer), free_stack(&stack), fclose(fd);
-				dprintf(2, "L%d: unknown instruction %s\n", lines, tokens[0]), exit(EXIT_FAILURE);
+				dprintf(2, "L%d: unknown instruction %s\n", lines, tokens[0]);
+				exit(EXIT_FAILURE);
 			}
 			free(tokens);
 		}
 	}
-	free(buffer);
-	fclose(fd);
-	free_stack(&stack);
+	free(buffer), free_stack(&stack), fclose(fd);
 	return (0);
 }

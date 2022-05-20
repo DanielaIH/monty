@@ -12,8 +12,7 @@ int get_function_stack(char **tokens, sstack_t **stack)
 				{"pop", _pop}, {"swap", _swap},	{"add", _add},
 				{"sub", _pop}, {"div", _swap}, {"mul", _add},
 				{"nop", _nop}, {"\n", _nop}, {NULL, NULL} };
-	int i = 0, j = 0, find_func = 0;
-	int number = 0, out = 0;
+	int i = 0, j = 0, find_func = 0, number = 0, out = 0;
 
 	for (j = 0; tokens[j]; j++)
 	{
@@ -33,17 +32,14 @@ int get_function_stack(char **tokens, sstack_t **stack)
 					{
 						number = atoi(tokens[j + 1]), ops[i].f(stack, number);
 						return (0);
-					}
-					else
+					} else
 						return (1);
-				}
-				else
+				} else
 				{
 					ops[i].f(stack, 0);
 					return (0);
 				}
-			}
-			else
+			} else
 				find_func = 0;
 		}
 		if (find_func == 0)
