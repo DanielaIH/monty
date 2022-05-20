@@ -40,6 +40,8 @@ typedef struct instruction_s
 	void (*f)(sstack_t **stack, unsigned int line_number);
 } instruction_t;
 
+char STATUS[2];
+
 char **_strtok(char **tokens, char *string);
 int get_function_stack(char **tokens, sstack_t **stack, unsigned int lines);
 int _char_to_number(char *str, int *ptr_number);

@@ -19,8 +19,14 @@ void _swap(sstack_t **stack, unsigned int line_number)
 			(*stack)->prev = NULL, (*stack)->next = swap;
 		}
 		else
+		{
+			STATUS[0] = 'F';
 			dprintf(2, "L%d: can't swap, stack too short\n", line_number);
+		}
 	}
 	else
+	{
+		STATUS[0] = 'F';
 		dprintf(2, "L%d: can't swap, stack too short\n", line_number);
+	}
 }

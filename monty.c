@@ -11,11 +11,11 @@ int main(int argc, char *argv[])
 {
 	int lines = 0, gf = 0;
 	FILE *fd;
-	/*ssize_t size_R; */
 	size_t size = 0;
 	char *buffer = NULL, **tokens = NULL;
 	sstack_t *stack = NULL;
 
+	STATUS[0] = 'S';
 	if (argc != 2)
 	{	dprintf(2, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);

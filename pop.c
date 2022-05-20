@@ -9,12 +9,13 @@ void _pop(sstack_t **stack, unsigned int line_number)
 {
 	sstack_t *tmp;
 
-	if (*stack)
+	if (!*stack)
 	{
-		tmp = (*stack)->next;
+		STATUS[0] = 'F';
+		dprintf(2, "L%d: can't pop an empty stack\n", line_number);
+		return;
+	}
+	tmp = (*stack)->next;
 		free(*stack);
 		*stack = tmp;
-	}
-	else
-		dprintf(2, "L%d: can't pop an empty stack\n", line_number);
 }
