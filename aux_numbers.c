@@ -5,7 +5,7 @@
  * Return: the string in int format
  */
 
-int _char_to_number(char *str)
+int _char_to_number(char *str, int *lines)
 {
 	unsigned int i = 0, digits = 1, j = 0, temp = 0;
 	int minus = 1, number = 0;
@@ -23,7 +23,7 @@ int _char_to_number(char *str)
 
 	while (str[j])
 	{
-		if (47 < str[j] < 58)
+		if (str[j] > 47  && str[j] < 58)
 		{
 			temp = (str[j] - '0') * digits;
 			number += temp;
@@ -31,9 +31,9 @@ int _char_to_number(char *str)
 			j++;
 		}
 		else
-			exit (EXIT_FAILURE);
+			dprintf(2, "L%d: usage: push integer\n", *lines), exit (EXIT_FAILURE);
 	}
-	printf("minus = %i\n", minus);
+
 	return (minus * number);
 }
 

@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 		if (strcmp(buffer, "\n") != 0)
 		{
 			tokens = _strtok(tokens, buffer);
-			gf = get_function_stack(tokens, &stack);
+			gf = get_function_stack(tokens, &stack, &lines);
 			if (gf == 1)
 			{
 				dprintf(2, "L%d: usage: push integer\n", lines);

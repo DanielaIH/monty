@@ -6,7 +6,7 @@
  * Return: Nothing.
  */
 
-int get_function_stack(char **tokens, sstack_t **stack)
+int get_function_stack(char **tokens, sstack_t **stack, int *lines)
 {
 	instruction_t ops[] = { {"push", _push}, {"pall", _pall}, {"pint", _pint},
 				{"pop", _pop}, {"swap", _swap},	{"add", _add},
@@ -26,8 +26,7 @@ int get_function_stack(char **tokens, sstack_t **stack)
 				{
 					if (!tokens[j + 1])
 						return (1);
-					number = _char_to_number(tokens[j + 1]);
-					printf("number %d\n", number);
+					number = _char_to_number(tokens[j + 1], lines);
 					if (!number || atoi(tokens[j + 1]) != 0)
 					{
 						number = atoi(tokens[j + 1]), ops[i].f(stack, number);
