@@ -7,8 +7,17 @@
  */
 void _add(sstack_t **stack, unsigned int line_number)
 {
-	(void)line_number;
+	int sum = 0;
 
 	if (*stack && (*stack)->next)
-		printf("%d\n", (*stack)->n + (*stack)->next->n);
+	{
+		sum = ((*stack)->n + (*stack)->next->n);
+		_pop(stack, 0);
+		(*stack)->n = sum;
+	}
+	else
+	{
+		STATUS[0] = 'F';
+		dprintf(2, "L%d: can't add, stack too short\n", line_number);
+	}
 }
