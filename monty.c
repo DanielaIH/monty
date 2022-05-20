@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 	int lines = 0, gf = 0;
 	FILE *fd;
 	/*ssize_t size_R; */
-	size_t size = 0, i;
+	size_t size = 0;
 	char *buffer = NULL, **tokens = NULL;
 	sstack_t *stack = NULL;
 	(void)argc;
@@ -31,8 +31,6 @@ int main(int argc, char *argv[])
 		if (strcmp(buffer, "\n") != 0)
 		{
 			tokens = _strtok(tokens, buffer);
-			for (i = 0; tokens[i]; i++)
-				printf("tokens[%ld] : %s\n", i, tokens[i]);
 			gf = get_function_stack(tokens, &stack);
 			if (gf == 1)
 			{
