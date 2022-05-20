@@ -38,7 +38,7 @@ int get_function_stack(char **tokens, sstack_t **stack, unsigned int lines)
 				} else
 				{
 					ops[i].f(stack, lines);
-					if (!*stack)
+					if (!*stack && !strcmp(tokens[j], "pint"))
 						return (3);
 					return (0);
 				}
