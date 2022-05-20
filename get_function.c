@@ -3,10 +3,11 @@
  * get_function_stack - Gives the function to use.
  * @tokens: Array of tokens.
  * @stack: The stack.
+ * @lines: numbers of lines in the file
  * Return: Nothing.
  */
 
-int get_function_stack(char **tokens, sstack_t **stack)
+int get_function_stack(char **tokens, sstack_t **stack, unsigned int lines)
 {
 	instruction_t ops[] = { {"push", _push}, {"pall", _pall}, {"pint", _pint},
 				{"pop", _pop}, {"swap", _swap},	{"add", _add},
@@ -36,7 +37,9 @@ int get_function_stack(char **tokens, sstack_t **stack)
 						return (1);
 				} else
 				{
-					ops[i].f(stack, 0);
+					ops[i].f(stack, lines);
+					if (!*stack)
+						return (3);
 					return (0);
 				}
 			} else

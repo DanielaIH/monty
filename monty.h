@@ -41,7 +41,7 @@ typedef struct instruction_s
 } instruction_t;
 
 char **_strtok(char **tokens, char *string);
-int get_function_stack(char **tokens, sstack_t **stack);
+int get_function_stack(char **tokens, sstack_t **stack, unsigned int lines);
 int _char_to_number(char *str, int *ptr_number);
 unsigned int _isnumber(char *str);
 void _push(sstack_t **stack, unsigned int line_number);
