@@ -8,13 +8,12 @@
 void _pop(sstack_t **stack, unsigned int line_number)
 {
 	sstack_t *tmp = NULL;
-	(void)line_number;
 
 	if (*stack)
 	{
-		tmp = *stack;
-		*stack = (*stack)->next;
-		free(tmp);
+		tmp = (*stack)->next;
+		free(*stack);
+		*stack = tmp;
 	}
 	else
 		dprintf(2, "L%d: can't pop an empty stack\n", line_number);
