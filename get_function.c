@@ -10,6 +10,7 @@ int get_function_stack(char **tokens, sstack_t **stack)
 {
 	instruction_t ops[] = { {"push", _push}, {"pall", _pall}, {"pint", _pint},
 				{"pop", _pop}, {"swap", _swap},	{"add", _add},
+				{"sub", _pop}, {"div", _swap}, {"mul", _add},
 				{"nop", _nop}, {"\n", _nop}, {NULL, NULL} };
 	int i = 0, j = 0, find_func = 0;
 	int number = 0;
