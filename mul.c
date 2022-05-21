@@ -1,6 +1,6 @@
 #include "monty.h"
 /**
- * _mul - pops stack
+ * _mul - multiplies two first elements of the stack
  * @stack:Double pointer to the stack
  * @line_number: value for includein the stack
  * Return: Nothing.

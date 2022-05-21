@@ -1,6 +1,6 @@
 #include "monty.h"
 /**
- * _pop - pops stack
+ * _pop - deletes first element of the stack
  * @stack:Double pointer to the stack
  * @line_number: value for includein the stack
  * Return: Nothing.
