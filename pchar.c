@@ -13,7 +13,7 @@ if (*stack)
 {
 	c = (*stack)->n;
 	if ((c > 64 && c < 91) || (c > 96 && c < 123))
-		printf("%c\n", _char);
+		printf("%c\n", c);
 	else
 	{
 		STATUS[0] = 'F';
