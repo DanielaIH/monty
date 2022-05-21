@@ -18,7 +18,7 @@ void _mod(sstack_t **stack, unsigned int line_number)
 			dprintf(2, "L%d: division by zero\n", line_number);
 			return;
 		}
-		mod = ((*stack)->next->n / (*stack)->n);
+		mod = ((*stack)->next->n % (*stack)->n);
 		(*stack)->next->n = mod;
 		_pop(stack, 0);
 	}
