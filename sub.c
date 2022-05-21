@@ -1,6 +1,6 @@
 #include "monty.h"
 /**
- * _sub - pops stack
+ * _sub - subtracts the top element
  * @stack:Double pointer to the stack
  * @line_number: value for includein the stack
  * Return: Nothing.
@@ -12,8 +12,8 @@ void _sub(sstack_t **stack, unsigned int line_number)
 	if (*stack && (*stack)->next)
 	{
 		sub = ((*stack)->next->n - (*stack)->n);
+		(*stack)->next->n = sub;
 		_pop(stack, 0);
-		(*stack)->n = sub;
 	}
 	else
 	{
