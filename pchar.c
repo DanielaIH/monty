@@ -7,25 +7,23 @@
  */
 void _pchar(sstack_t **stack, unsigned int line_number)
 {
-    char _char;
+char c;
 
-	if (*stack)
-	{
-        if (((*stack)->n > 64 && (*stack)->n < 91) || ((*stack)->n > 96 && (*stack)->n < 123))
-		{
-            _char = (*stack)->n;
-		    printf("%c\n", _char);
-        }
-        else
-        {
-            STATUS[0] = 'F';
-            dprintf(2, "L%d: can't pchar, value out of range\n", line_number);
-            return;
-        }
-	}
+if (*stack)
+{
+	c = (*stack)->n;
+	if ((c > 64 && c < 91) || (c > 96 && c < 123))
+		printf("%c\n", _char);
 	else
 	{
 		STATUS[0] = 'F';
-		dprintf(2, "L%d: can't pchar, stack empty\n", line_number);
+		dprintf(2, "L%d: can't pchar, value out of range\n", line_number);
+		return;
 	}
+}
+else
+{
+	STATUS[0] = 'F';
+	dprintf(2, "L%d: can't pchar, stack empty\n", line_number);
+}
 }
