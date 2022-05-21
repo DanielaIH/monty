@@ -23,6 +23,11 @@ char **_strtok(char **tokens, char *string)
 		token = strtok(NULL, "\t \n\r"), i++;
 		tokens[i] = token;
 	}
+	if (tokens[0][0] == '#')
+	{
+		tokens[0] = "nop";
+	}
+
 	i++, tokens[i] = NULL;
 	return (tokens);
 }
