@@ -18,4 +18,7 @@ void _pop(sstack_t **stack, unsigned int line_number)
 	tmp = (*stack)->next;
 	free(*stack);
 	*stack = tmp;
+
+	if (tmp)
+		tmp->prev = NULL;
 }
