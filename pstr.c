@@ -7,32 +7,27 @@
  */
 void _pstr(sstack_t **stack, unsigned int line_number)
 {
-char c;
-sstack_t *tmp = *stack;
+	char c;
+	sstack_t *tmp = *stack;
 
-(void) line_number;
-if (*stack)
-{
-	while (tmp)
+	(void) line_number;
+	if (*stack)
 	{
-		c = tmp->n;
-		if ((c > 64 && c < 91) || (c > 96 && c < 123))
-			printf("%c", c);
-		if (!tmp->next || tmp->n == 0)
+		while (tmp)
 		{
-			printf("\n");
-			return;
-		}
-		else
-		{
-			tmp = tmp->next;
 			c = tmp->n;
+			if ((c > 64 && c < 91) || (c > 96 && c < 123))
+				printf("%c", c);
+			if (!tmp->next || tmp->n == 0)
+			{
+				printf("\n");
+				return;
+			}
+			else
+			{
+				tmp = tmp->next;
+				c = tmp->n;
+			}
 		}
 	}
-}
-else
-{
-	printf("\n");
-	STATUS[0] = 'F';
-}
 }
