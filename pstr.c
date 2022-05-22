@@ -18,6 +18,11 @@ void _pstr(sstack_t **stack, unsigned int line_number)
 			c = tmp->n;
 			if ((c > 64 && c < 91) || (c > 96 && c < 123))
 				printf("%c", c);
+			else
+			{
+				printf("\n");
+				return;
+			}
 			if (!tmp->next || tmp->n == 0)
 			{
 				printf("\n");
