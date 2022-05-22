@@ -1,1 +1,1 @@
-# bf code is very smiple commands
+# bf code is very simple commands
