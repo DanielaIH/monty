@@ -30,4 +30,6 @@ void _pstr(sstack_t **stack, unsigned int line_number)
 			}
 		}
 	}
+	else
+		printf("\n");
 }
