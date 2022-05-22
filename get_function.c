@@ -12,7 +12,7 @@ int get_function_stack(char **tokens, sstack_t **stack, unsigned int lines)
 	instruction_t ops[] = { {"push", _push}, {"pall", _pall}, {"pint", _pint},
 				{"pop", _pop}, {"swap", _swap},	{"add", _add}, {"sub", _sub},
 				{"div", _div}, {"mul", _mul}, {"mod", _mod}, {"pchar", _pchar},
-				{"pstr", _pstr}, {"rotl", _rotl},
+				{"pstr", _pstr}, {"rotl", _rotl}, {"rotr", _rotr},
 				{"nop", _nop}, {"\n", _nop}, {NULL, NULL} };
 	int i = 0, j = 0, find_func = 0, number = 0, out = 0;
 
