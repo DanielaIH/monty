@@ -7,23 +7,8 @@
  */
 void _push(sstack_t **stack, unsigned int line_number)
 {
-	sstack_t *new, *aux;
-
-	aux = *stack;
-	new = malloc(sizeof(sstack_t));
-	if (new == NULL)
-		return;
-
-	new->n = line_number;
-	new->prev = NULL;
-	if (!aux)
-		new->next = NULL;
+	if (if_stack)
+		add_stack(stack, line_number);
 	else
-	{
-		while (aux->prev)
-			aux = aux->prev;
-		aux->prev = new;
-		new->next = aux;
-	}
-	*stack = new;
+		add_queue(stack, line_number);
 }

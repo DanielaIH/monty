@@ -41,6 +41,7 @@ typedef struct instruction_s
 } instruction_t;
 
 char STATUS[2];
+int if_stack;
 
 char **_strtok(char **tokens, char *string);
 int get_function_stack(char **tokens, sstack_t **stack, unsigned int lines);
@@ -65,5 +66,7 @@ void _stack(sstack_t **stack, unsigned int line_number);
 void _queue(sstack_t **stack, unsigned int line_number);
 void free_stack(sstack_t **stack);
 void ts_handler(char *line);
+sstack_t *add_stack(sstack_t **head, const int n);
+sstack_t *add_queue(sstack_t **head, const int n);
 
 #endif /* _MONTY_H_ */

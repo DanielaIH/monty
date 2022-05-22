@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
 	char *buffer = NULL, **tokens = NULL;
 	sstack_t *stack = NULL;
 
-	STATUS[0] = 'S';
+	STATUS[0] = 'S', if_stack = 1;
 	if (argc != 2)
 	{	dprintf(2, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
